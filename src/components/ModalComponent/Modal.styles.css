@@ -10,12 +10,14 @@
 
   background-color: rgba(0, 0, 0, 0.5);
 
-  z-index: 3000;
+  z-index: 300000;
 }
 
 .modal-component {
   width: 35%;
-  height: 90%;
+  height: auto;
+
+  padding-bottom: 2rem;
 
   background-color: #fff;
 
@@ -25,17 +27,13 @@
   border-radius: 1rem;
 }
 
-.modal-component > *:not(:last-child) {
-  margin-bottom: 1rem;
-}
-
 .modal-component-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  height: 8rem;
-  padding: 2rem 3rem;
+  height: 6rem;
+  padding: 0rem 3rem;
 
   border-bottom: 0.1rem solid #eee;
 
@@ -46,7 +44,7 @@
 }
 
 .modal-component-header-value {
-  font-size: 2rem;
+  font-size: 1.7rem;
   color: #444;
   text-transform: capitalize;
 }
@@ -75,15 +73,15 @@
 .modal-component-body-button {
   width: 20rem;
 
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 100;
 }
 
 .modal-component-body-error {
   width: 100%;
-  height: 3rem;
+  height: 1.7rem;
   color: #a00;
 
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 100;
 }

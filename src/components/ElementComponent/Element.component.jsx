@@ -55,6 +55,15 @@ const ElementComponent = (props) => {
   const isClickedLatest = useRef(isClicked);
 
   /**
+   * Ref : Stores current mouse position
+   */
+
+  const mousePointerRef = useRef({
+    x: 0,
+    y: 0,
+  });
+
+  /**
    * Updates text of selected element in Canvas Elements list
    * @param {string} text
    */
@@ -63,10 +72,12 @@ const ElementComponent = (props) => {
 
   /**
    * Visibility of element is set to 0 to hide draggging ghost image and element together (element is hidden)
+   * typeof InstallTrigger !== "undefined" checks if browser is firefox
    */
 
   const onDragStartHandler = () => {
-    elementRef.current.style.opacity = "0";
+    const isFirefox = typeof InstallTrigger !== "undefined";
+    elementRef.current.style.opacity = isFirefox ? "1" : "0";
   };
 
   /**
@@ -75,11 +86,7 @@ const ElementComponent = (props) => {
    */
 
   const onDragHandler = (event) => {
-    let { pageX: xCoordinate, pageY: yCoordinate, touches } = event;
-    if (touches && touches.length === 1) {
-      xCoordinate = touches[0].pageX;
-      yCoordinate = touches[0].pageY;
-    }
+    let { pageX: xCoordinate, pageY: yCoordinate } = event;
 
     setCoordinates((originalCoordinates) => ({
       x:
@@ -98,7 +105,11 @@ const ElementComponent = (props) => {
    */
 
   const onDragEndHandler = () => {
-    updateElementPosition(coordinates.x, coordinates.y, elementId);
+    updateElementPosition(
+      mousePointerRef.current.x,
+      mousePointerRef.current.y,
+      elementId
+    );
   };
 
   /**
@@ -206,6 +217,24 @@ const ElementComponent = (props) => {
     isClickedLatest.current = isClicked;
   }, [isClicked]);
 
+  /**
+   * This hook adds event listener for drop events on window
+   * Need this to get drop location as you can't get screenX, screenY on firefox
+   */
+
+  useEffect(() => {
+    const dropEventListener = (event) => {
+      mousePointerRef.current = {
+        x: event.clientX,
+        y: event.clientY,
+      };
+    };
+
+    window.addEventListener("drop", dropEventListener);
+
+    return () => window.removeEventListener("drop", dropEventListener);
+  }, []);
+
   const styleObject = {
     position: "absolute",
     left: coordinates.x,
@@ -227,7 +256,7 @@ const ElementComponent = (props) => {
       onDragEnd={onDragEndHandler}
       onDragOver={onDragOverHandler}
       onClick={onClickHandler}
-      draggable
+      draggable={true}
     >
       {_renderElement(elementType, text)}
     </div>
