@@ -34,7 +34,6 @@ const ElementTypeComponent = (props) => {
 
   useEffect(() => {
     const dropEventListener = (event) => {
-      console.log("322332323");
       mousePointerRef.current = {
         x: event.clientX,
         y: event.clientY,

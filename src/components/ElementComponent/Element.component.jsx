@@ -175,6 +175,8 @@ const ElementComponent = (props) => {
     };
 
     const handleKeyPress = (event) => {
+      event.preventDefault();
+
       if (isClickedLatest.current) {
         const { keyCode } = event;
         if (keyCode === 13) {
@@ -189,11 +191,16 @@ const ElementComponent = (props) => {
       }
     };
 
+    const handleKeyDown = (event) =>
+      event.keyCode === 8 && isClickedLatest.current && event.preventDefault();
+
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("keyup", handleKeyPress);
+    document.addEventListener("keydown", handleKeyDown);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keyup", handleKeyPress);
+      document.removeEventListener("keydown", handleKeyDown);
     };
     // eslint-disable-next-line
   }, [elementRef, isClicked]);
