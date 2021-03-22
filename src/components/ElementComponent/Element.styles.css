@@ -1,0 +1,24 @@
+.element-component {
+  width: 10rem;
+  height: 4rem;
+}
+
+.element-component-common {
+  transition: transform 0.5s;
+  transform: translate(-50%, -50%);
+}
+
+.element-component-input {
+  min-width: 20rem;
+  min-height: 3.5rem;
+}
+
+.element-component-label {
+  width: auto;
+  height: auto;
+}
+
+.element-component-button {
+  min-width: 10rem;
+  min-height: 4rem;
+}

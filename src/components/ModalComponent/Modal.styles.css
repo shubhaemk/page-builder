@@ -1,0 +1,89 @@
+.modal-container {
+  position: absolute;
+
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.5);
+
+  z-index: 3000;
+}
+
+.modal-component {
+  width: 35%;
+  height: 90%;
+
+  background-color: #fff;
+
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 1rem;
+}
+
+.modal-component > *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.modal-component-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 8rem;
+  padding: 2rem 3rem;
+
+  border-bottom: 0.1rem solid #eee;
+
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+
+  background-color: rgb(252, 252, 252);
+}
+
+.modal-component-header-value {
+  font-size: 2rem;
+  color: #444;
+  text-transform: capitalize;
+}
+
+.modal-component-header-icon {
+  width: 1.3rem;
+  margin-right: 0.5rem;
+
+  cursor: pointer;
+
+  fill: #aaa;
+}
+
+.modal-component-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding: 0.5rem 3rem;
+}
+
+.modal-component-body > *:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.modal-component-body-button {
+  width: 20rem;
+
+  font-size: 2rem;
+  font-weight: 100;
+}
+
+.modal-component-body-error {
+  width: 100%;
+  height: 3rem;
+  color: #a00;
+
+  font-size: 2rem;
+  font-weight: 100;
+}

@@ -1,0 +1,15 @@
+.button-component {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 0.5rem;
+
+  background-color: rgb(20, 45, 200);
+  color: #fff;
+
+  padding: 0.5rem 1rem;
+}

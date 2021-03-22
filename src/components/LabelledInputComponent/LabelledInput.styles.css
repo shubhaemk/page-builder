@@ -1,0 +1,13 @@
+.labelled-input-container {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  font-size: 2rem;
+  font-weight: 100;
+}
+
+.labelled-input-container > *:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
